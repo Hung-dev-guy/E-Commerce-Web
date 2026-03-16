@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ECommerceTech SQL Playground - Trình soạn và thực thi câu lệnh SQL trực quan">
+  <title>SQL Playground — ECommerceTech</title>
+  <link rel="stylesheet" href="sql-playground.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">SQL</div>
+        <span class="logo-text">SQL Playground</span>
+      </a>
+      <span class="header-subtitle">ECommerceTech Database</span>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <!-- SQL INPUT PANEL -->
+    <section class="panel panel-editor" id="editorPanel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-icon">✏️</span>
+          <h2>SQL Editor</h2>
+        </div>
+        <div class="panel-actions">
+          <button class="btn btn-secondary" id="clearBtn" title="Xoá truy vấn">
+            <span>🗑️</span> Xoá
+          </button>
+          <button class="btn btn-primary" id="runBtn" title="Chạy truy vấn (Ctrl+Enter)">
+            <span>▶</span> Chạy
+          </button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="line-numbers" id="lineNumbers">1</div>
+        <textarea id="sqlInput" class="sql-textarea"
+          placeholder="-- Nhập câu lệnh SQL tại đây...&#10;SELECT * FROM Accounts;" spellcheck="false"
+          autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+      </div>
+      <div class="panel-footer">
+        <span class="status-text" id="editorStatus">Sẵn sàng</span>
+        <span class="char-count" id="charCount">0 ký tự</span>
+      </div>
+    </section>
+
+    <!-- RESULT PANEL -->
+    <section class="panel panel-result" id="resultPanel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-icon">📊</span>
+          <h2>Kết quả</h2>
+        </div>
+        <div class="panel-actions">
+          <button class="btn btn-secondary" id="exportBtn" title="Xuất CSV" disabled>
+            <span>📥</span> Xuất CSV
+          </button>
+        </div>
+      </div>
+      <div class="panel-body result-body" id="resultBody">
+        <div class="result-placeholder" id="resultPlaceholder">
+          <div class="placeholder-icon">💡</div>
+          <p>Nhập câu lệnh SQL ở panel bên trái và nhấn <kbd>Chạy</kbd> hoặc <kbd>Ctrl+Enter</kbd></p>
+        </div>
+        <div class="result-table-wrapper" id="resultTableWrapper" style="display:none;">
+          <table class="result-table" id="resultTable">
+            <thead id="resultHead"></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
+        </div>
+        <div class="result-message" id="resultMessage" style="display:none;"></div>
+      </div>
+      <div class="panel-footer">
+        <span class="status-text" id="resultStatus"></span>
+        <span class="row-count" id="rowCount"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/sql-playground.js"></script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
-from app.repositories.product_repo import ProductRepository
-from app.schemas.product import Product, ProductCreate
+from ..repositories.product_repo import ProductRepository
+from ..schemas.product import Product, ProductCreate
 from typing import List, Optional
 
 class ProductService:

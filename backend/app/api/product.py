@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas.product import Product, ProductCreate
-from app.services.product_service import ProductService
+from ..schemas.product import Product, ProductCreate
+from ..services.product_service import ProductService
 
 router = APIRouter()
 product_service = ProductService()

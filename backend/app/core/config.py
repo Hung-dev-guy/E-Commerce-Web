@@ -3,11 +3,11 @@ from typing import Optional
 
 class Settings(BaseSettings):
     # Database settings
-    DB_HOST: str = "localhost"
-    DB_PORT: int = 5432
-    DB_NAME: str = "ecommerce"
-    DB_USER: str = "postgres"
-    DB_PASSWORD: str = "postgres"
+    DB_HOST: str = "127.0.0.1"
+    DB_PORT: int = 1433
+    DB_NAME: str = "ECommerceTech"
+    DB_USER: str = "sa"
+    DB_PASSWORD: str = "hUnG2#45@"
     
     # API settings
     API_V1_STR: str = "/api/v1"

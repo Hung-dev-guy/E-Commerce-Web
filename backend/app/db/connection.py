@@ -1,16 +1,15 @@
-import psycopg2
-from psycopg2.extras import RealDictCursor
-from app.core.config import settings
+import pymssql
+from ..core.config import settings
 
 def get_db_connection():
-    """Create and return a database connection"""
-    conn = psycopg2.connect(
-        host=settings.DB_HOST,
+    """Create and return a database connection to SQL Server"""
+    conn = pymssql.connect(
+        server=settings.DB_HOST,
         port=settings.DB_PORT,
         database=settings.DB_NAME,
         user=settings.DB_USER,
         password=settings.DB_PASSWORD,
-        cursor_factory=RealDictCursor
+        as_dict=True
     )
     return conn
 
@@ -19,10 +18,10 @@ def test_connection():
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT 1")
+        cursor.execute("SELECT 1 AS test")
+        result = cursor.fetchone()
         cursor.close()
         conn.close()
-        return True
+        return {"status": "connected", "result": result}
     except Exception as e:
-        print(f"Database connection failed: {e}")
-        return False
+        return {"status": "failed", "error": str(e)}

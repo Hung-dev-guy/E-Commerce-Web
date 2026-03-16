@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import product, order, user
+from fastapi.staticfiles import StaticFiles
+from .api import product, order, user, sql
+from .db.connection import test_connection
+import os
 
 app = FastAPI(title="E-commerce API")
 
@@ -17,7 +20,19 @@ app.add_middleware(
 app.include_router(product.router, prefix="/api/products", tags=["products"])
 app.include_router(order.router, prefix="/api/orders", tags=["orders"])
 app.include_router(user.router, prefix="/api/users", tags=["users"])
+app.include_router(sql.router, prefix="/api/sql", tags=["sql"])
+
+# Serve frontend static files
+frontend_dir = os.path.join(os.path.dirname(__file__), "..", "..", "frontend")
+frontend_dir = os.path.abspath(frontend_dir)
+app.mount("/static", StaticFiles(directory=frontend_dir, html=True), name="frontend")
 
 @app.get("/")
 async def root():
-    return {"message": "E-commerce API"}
+    return {"message": "E-commerce API", "playground": "/static/sql-playground.html"}
+
+@app.get("/health")
+async def health_check():
+    """Test database connection"""
+    db_status = test_connection()
+    return {"api": "running", "database": db_status}

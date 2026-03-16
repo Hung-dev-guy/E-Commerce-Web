@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,61 +11,61 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
         }
-        
+
         header {
             background: #333;
             color: #fff;
             padding: 1rem;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         nav h1 {
             font-size: 1.5rem;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-        
+
         nav a {
             color: #fff;
             text-decoration: none;
         }
-        
+
         nav a:hover {
             color: #4CAF50;
         }
-        
+
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        
+
         .hero {
             text-align: center;
             padding: 3rem 0;
             background: #f4f4f4;
             margin-bottom: 2rem;
         }
-        
+
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -74,12 +75,13 @@
             border-radius: 5px;
             margin-top: 1rem;
         }
-        
+
         .btn:hover {
             background: #45a049;
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -88,10 +90,11 @@
                 <li><a href="index.html">Trang chủ</a></li>
                 <li><a href="products.html">Sản phẩm</a></li>
                 <li><a href="cart.html">Giỏ hàng (<span id="cart-count">0</span>)</a></li>
+                <li><a href="sql-playground.html">SQL Playground</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <main>
         <section class="hero">
             <h2>Chào mừng đến với E-Commerce</h2>
@@ -99,7 +102,7 @@
             <a href="products.html" class="btn">Xem sản phẩm</a>
         </section>
     </main>
-    
+
     <script src="js/api.js"></script>
     <script src="js/cart.js"></script>
     <script>
@@ -109,4 +112,5 @@
         });
     </script>
 </body>
+
 </html>

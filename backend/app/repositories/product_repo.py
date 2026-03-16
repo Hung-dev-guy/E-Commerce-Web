@@ -1,5 +1,5 @@
-from app.db.connection import get_db_connection
-from app.schemas.product import Product, ProductCreate
+from ..db.connection import get_db_connection
+from ..schemas.product import Product, ProductCreate
 from typing import List, Optional
 import os
 

@@ -1,5 +1,5 @@
-from app.repositories.order_repo import OrderRepository
-from app.schemas.order import Order, OrderCreate
+from ..repositories.order_repo import OrderRepository
+from ..schemas.order import Order, OrderCreate
 from typing import List, Optional
 
 class OrderService:

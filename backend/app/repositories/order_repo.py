@@ -1,5 +1,5 @@
-from app.db.connection import get_db_connection
-from app.schemas.order import Order, OrderCreate
+from ..db.connection import get_db_connection
+from ..schemas.order import Order, OrderCreate
 from typing import List, Optional
 import os
 
