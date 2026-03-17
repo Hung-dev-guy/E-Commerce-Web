@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from .api import product, order, user, sql
+from .api import sql
 from .db.connection import test_connection
 import os
 
-app = FastAPI(title="E-commerce API")
+app = FastAPI(title="SQL Playground API")
 
 # CORS middleware
 app.add_middleware(
@@ -17,9 +17,6 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(product.router, prefix="/api/products", tags=["products"])
-app.include_router(order.router, prefix="/api/orders", tags=["orders"])
-app.include_router(user.router, prefix="/api/users", tags=["users"])
 app.include_router(sql.router, prefix="/api/sql", tags=["sql"])
 
 # Serve frontend static files

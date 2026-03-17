@@ -3,7 +3,8 @@ GO
 
 USE ECommerceTech;
 GO
-
+-- Sau khi tạo các bảng hoàn tất
+-- Sử dụng Query trong file insertData.sql để nhập các bản ghi 
 -- ======================================================
 -- 1. Bảng Accounts (Tài khoản đăng nhập)
 -- ======================================================
@@ -170,14 +171,15 @@ CREATE TABLE Attributes (
 -- ======================================================
 CREATE TABLE Variants (
     variantId INT IDENTITY(1,1) PRIMARY KEY,
-    SKU NVARCHAR(50) NOT NULL UNIQUE,
+    SKU NVARCHAR(50) NOT NULL,
     sellPrice DECIMAL(18,2) NOT NULL CHECK (sellPrice >= 0),
     costPrice DECIMAL(18,2) CHECK (costPrice >= 0),
     status NVARCHAR(20) DEFAULT N'Đang bán' CHECK (status IN (N'Đang bán', N'Ngừng bán', N'Hết hàng')),
     imageUrl NVARCHAR(500),
     unit NVARCHAR(50) NOT NULL DEFAULT N'cái',
     productId INT NOT NULL,
-    FOREIGN KEY (productId) REFERENCES Products(productId) ON DELETE CASCADE
+    FOREIGN KEY (productId) REFERENCES Products(productId) ON DELETE CASCADE,
+    UNIQUE (SKU, productId)
 );
 
 -- ======================================================

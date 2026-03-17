@@ -50,3 +50,14 @@ docker cp /home/hungdvlper/Documents/DBMS/E_commerce/DataForInsert/insertData.sq
 docker exec -it sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "hUnG2#45@" -C -i /tmp/insertData.sql
 ```
 Then you can practice writing sql queries to get results
+
+## STEP 6: USE CLI TO WRITE SQL QUERIES (OPTIONAL)
+```bash
+docker exec -it sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "hUnG2#45@" -C
+
+SELECT name FROM sys.databases;
+GO
+
+USE ECommerceTech;
+GO
+```

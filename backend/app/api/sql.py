@@ -9,10 +9,23 @@ class SQLQuery(BaseModel):
 
 @router.post("/execute")
 async def execute_sql(payload: SQLQuery):
-    """Execute a SQL query and return the results"""
+    """Execute a SQL query and return the results (SELECT only)"""
     sql = payload.query.strip()
     if not sql:
         return {"type": "message", "status": "error", "text": "Empty query"}
+
+    # Security check: only allow SELECT queries
+    sql_upper = sql.upper()
+    forbidden_keywords = ["DROP", "DELETE", "UPDATE", "INSERT", "ALTER", "CREATE", "TRUNCATE"]
+    
+    # Check if query starts with SELECT
+    if not sql_upper.startswith("SELECT"):
+        return {"type": "message", "status": "error", "text": "Only SELECT queries are allowed"}
+    
+    # Check for forbidden keywords
+    for keyword in forbidden_keywords:
+        if keyword in sql_upper:
+            return {"type": "message", "status": "error", "text": f"'{keyword}' operations are not allowed"}
 
     try:
         conn = get_db_connection()
